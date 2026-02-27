@@ -1,69 +1,109 @@
-# Local AI CLI Tool
+# Local AI Assistant
 
-A command-line tool that wraps the Anthropic API to perform various coding tasks, such as summarizing files, refactoring code, generating tests, explaining error logs, and answering questions about your codebase.
+A powerful local AI tool that wraps the Anthropic API to assist developers with coding tasks. It features both a Command Line Interface (CLI) and a beautiful Web User Interface (UI) built with Streamlit.
+
+## Features
+
+- **Chat with Codebase**: Ask questions about your project, providing relevant file context.
+- **Summarize Files**: Get concise summaries of text or code files.
+- **Refactor Code**: Improve code readability, performance, and maintainability.
+- **Generate Tests**: Automatically generate unit tests for your code.
+- **Explain Errors**: Get explanations and fixes for error logs.
 
 ## Prerequisites
 
-- Python 3.7+
-- An Anthropic API Key
+- **Python 3.8+**
+- **Anthropic API Key**: You need an API key from [Anthropic](https://console.anthropic.com/).
 
 ## Installation
 
-1.  Clone the repository or navigate to the project directory.
-2.  Install the dependencies:
+### macOS (and Linux)
 
+1.  **Install Python** (if not already installed):
+    ```bash
+    brew install python
+    ```
+
+2.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/your-username/local-ai-assistant.git
+    cd local-ai-assistant
+    ```
+
+3.  **Create a Virtual Environment**:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+4.  **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  Set your Anthropic API Key as an environment variable:
-
+5.  **Set your API Key**:
+    You can set it as an environment variable (recommended) or enter it in the UI.
     ```bash
     export ANTHROPIC_API_KEY="your-api-key-here"
     ```
 
 ## Usage
 
-You can run the tool using `python main.py` followed by a command.
+### Web UI (Recommended)
 
-### Commands
+The Web UI provides a user-friendly interface for all features.
 
-#### 1. Summarize a File
-Summarizes the content of a text file.
+1.  **Run the App**:
+    ```bash
+    streamlit run app.py
+    ```
+2.  The app will open in your default web browser (usually at `http://localhost:8501`).
+3.  Enter your API Key in the sidebar (if not set via environment variable).
+4.  Select a model (e.g., Claude 3 Opus).
+5.  Use the tabs to navigate between features.
 
-```bash
-python main.py summarize <path-to-file>
-```
+### CLI
 
-#### 2. Refactor Code
-Refactors the code in the specified file for readability, performance, and maintainability.
-
-```bash
-python main.py refactor <path-to-file>
-```
-
-#### 3. Generate Tests
-Generates unit tests for the code in the specified file.
+The CLI is perfect for quick tasks or scripting.
 
 ```bash
-python main.py gen-tests <path-to-file>
+# General usage
+python main.py <command> [options]
+
+# Examples:
+python main.py summarize path/to/file.txt
+python main.py refactor path/to/code.py
+python main.py gen-tests path/to/code.py
+python main.py explain path/to/error.log
+python main.py ask "What does this class do?" --files "src/*.py"
 ```
 
-#### 4. Explain Error
-Explains an error log found in the specified file and suggests fixes.
+## Uploading to GitHub
 
-```bash
-python main.py explain <path-to-log-file>
-```
+If you want to host your own version or contribute:
 
-#### 5. Ask Questions
-Answers questions about your codebase, using provided files as context.
+1.  **Initialize Git**:
+    ```bash
+    git init
+    ```
 
-```bash
-python main.py ask "What does the user class do?" --files "src/*.py" "tests/*.py"
-```
+2.  **Add Files**:
+    ```bash
+    git add .
+    ```
 
-The `--files` argument accepts file paths or glob patterns to include relevant context for the LLM.
+3.  **Commit Changes**:
+    ```bash
+    git commit -m "Initial commit"
+    ```
+
+4.  **Push to GitHub**:
+    Create a new repository on GitHub, then follow the instructions to push:
+    ```bash
+    git remote add origin https://github.com/your-username/local-ai-assistant.git
+    git branch -M main
+    git push -u origin main
+    ```
 
 ## Testing
 
